@@ -6,11 +6,23 @@ public class DestroyByContact : MonoBehaviour
 {
     public GameObject explosion;
     public GameObject playerExplosion;
+    public int scoreValue;
+    private GameController gameController;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject go = GameObject.FindWithTag("GameController");
+        if(go!=null){
+            gameController=go.GetComponent<GameController>();
+        }else{
+            Debug.Log("Can not find GameController object");
+        }
+        if(gameController==null){
+            Debug.Log("Cannot find script GameController.cs");
+        }
+            
     }
+            
 
     // Update is called once per frame
     void Update()
@@ -31,6 +43,10 @@ public class DestroyByContact : MonoBehaviour
         {
             Instantiate(playerExplosion,other.transform.position,
                         other.transform.rotation);
+        }
+        else
+        {
+            gameController.AddScore(scoreValue);
         }
     }
 }

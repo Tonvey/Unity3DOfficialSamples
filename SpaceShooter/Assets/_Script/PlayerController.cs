@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Fire1")&&Time.time>nextFire)
         {
             Debug.Log("Make a file");
+            GetComponent<AudioSource>().Play();
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
         }
