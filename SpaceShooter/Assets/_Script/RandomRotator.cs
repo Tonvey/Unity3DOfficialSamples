@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mover : MonoBehaviour
+public class RandomRotator : MonoBehaviour
 {
-    public float speed;
+    public float tumble=10.0f;
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.velocity = new Vector3(0.0f,0.0f,speed);
+        GetComponent<Rigidbody>().angularVelocity
+                                 = Random.insideUnitSphere*tumble;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+           
     }
 }
